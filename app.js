@@ -18,3 +18,17 @@ function getRandomHole(holes) {
 }
 
 console.log(getRandomHole(holes));
+
+
+function appear() {
+   const time = getRandomTime(800, 1100);
+   const hole = getRandomHole(holes);
+
+   hole.classList.add('active');
+   setTimeout(() => {
+      hole.classList.remove('active');
+   }, time);
+   setTimeout(appear, time);
+}
+
+startButton.addEventListener('click', appear);
