@@ -3,7 +3,7 @@ const startButton = document.querySelector('.button-start-game');
 const gameField = document.querySelector('.game-field');
 const moles = document.querySelectorAll('.mole');
 const holes = document.querySelectorAll('.hole');
-const scoreBoard = docement.querySelector('.score span');
+const scoreBoard = document.querySelector('.score span');
 
 let lastHole;
 let isTimeUp = false;
@@ -47,9 +47,25 @@ function appear() {
 
 function startGame() {
    isTimeUp = false;
+   score = 0;
+   scoreBoard.textContent = score;
    appear();
    // * After 10 sec game stops
    setTimeout(() => isTimeUp = true, 10000);
 }
 
 startButton.addEventListener('click', startGame);
+
+function hitMole(e) {
+
+   const mole = e.target.closest('.mole');
+
+   if (mole) {
+      console.log(e.target.parentNode);
+      score++;
+      scoreBoard.textContent = score;
+      e.target.parentNode.classList.remove('active');
+   }
+}
+
+gameField.addEventListener('click', hitMole);
