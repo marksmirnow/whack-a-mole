@@ -4,6 +4,8 @@ const gameField = document.querySelector('.game-field');
 const moles = document.querySelectorAll('.mole');
 const holes = document.querySelectorAll('.hole');
 
+let lastHole;
+
 
 function getRandomTime(min, max) {
    return Math.floor((Math.random() * (max - min + 1) + min));
@@ -13,6 +15,14 @@ function getRandomTime(min, max) {
 function getRandomHole(holes) {
    const randomIndex = Math.floor(Math.random() * (holes.length));
    const randomHole = holes[randomIndex];
+
+   if (randomHole === lastHole) {
+
+      console.log('THIS HOLE AGAIN!!!!!!!!');
+      return getRandomHole(holes);
+   }
+
+   lastHole = randomHole;
    randomHole.style.background = 'blue';
    return randomHole;
 }
