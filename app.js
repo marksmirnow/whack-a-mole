@@ -3,9 +3,11 @@ const startButton = document.querySelector('.button-start-game');
 const gameField = document.querySelector('.game-field');
 const moles = document.querySelectorAll('.mole');
 const holes = document.querySelectorAll('.hole');
+const scoreBoard = docement.querySelector('.score span');
 
 let lastHole;
 let isTimeUp = false;
+let score = 0;
 
 
 function getRandomTime(min, max) {

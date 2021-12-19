@@ -14,6 +14,12 @@
    font-family: 'Architects Daughter', cursive;
 }
 
+.score {
+   font-size: 2rem;
+   font-family: Verdana, Geneva, sans-serif;
+   position: relative;
+}
+
 .game-header {
    font-size: 3rem;
 }
