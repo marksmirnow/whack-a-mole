@@ -40,7 +40,6 @@
 
 
 .game-field {
-   border: 5px solid black;
    width: 50%;
    height: 400px;
    display: flex;
@@ -48,7 +47,6 @@
 }
 
 .game-target {
-   border: 1px solid blue;
    position: relative;
    overflow: hidden;
    flex: 1 0 33.333%;
