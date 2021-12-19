@@ -4,6 +4,7 @@ const gameField = document.querySelector('.game-field');
 const moles = document.querySelectorAll('.mole');
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score span');
+const augh = document.querySelector('.augh');
 
 let lastHole;
 let isTimeUp = false;
@@ -34,7 +35,7 @@ console.log(getRandomHole(holes));
 
 
 function appear() {
-   const time = getRandomTime(800, 1100);
+   const time = getRandomTime(300, 700);
    const hole = getRandomHole(holes);
    console.log(isTimeUp);
 
@@ -62,6 +63,8 @@ function hitMole(e) {
 
    if (mole) {
       console.log(e.target.parentNode);
+      augh.currentTime = 0;
+      augh.play();
       score++;
       scoreBoard.textContent = score;
       e.target.parentNode.classList.remove('active');
