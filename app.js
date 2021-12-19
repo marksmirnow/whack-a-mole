@@ -5,6 +5,7 @@ const moles = document.querySelectorAll('.mole');
 const holes = document.querySelectorAll('.hole');
 
 let lastHole;
+let isTimeUp = false;
 
 
 function getRandomTime(min, max) {
@@ -23,7 +24,7 @@ function getRandomHole(holes) {
    }
 
    lastHole = randomHole;
-   randomHole.style.background = 'blue';
+   // randomHole.style.background = 'blue';
    return randomHole;
 }
 
@@ -33,12 +34,20 @@ console.log(getRandomHole(holes));
 function appear() {
    const time = getRandomTime(800, 1100);
    const hole = getRandomHole(holes);
+   console.log(isTimeUp);
 
    hole.classList.add('active');
    setTimeout(() => {
       hole.classList.remove('active');
+      if (!isTimeUp) appear();
    }, time);
-   setTimeout(appear, time);
 }
 
-startButton.addEventListener('click', appear);
+function startGame() {
+   isTimeUp = false;
+   appear();
+   // * After 10 sec game stops
+   setTimeout(() => isTimeUp = true, 10000);
+}
+
+startButton.addEventListener('click', startGame);
