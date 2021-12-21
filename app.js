@@ -21,23 +21,17 @@ function getRandomHole(holes) {
    const randomHole = holes[randomIndex];
 
    if (randomHole === lastHole) {
-
-      console.log('THIS HOLE AGAIN!!!!!!!!');
       return getRandomHole(holes);
    }
 
    lastHole = randomHole;
-   // randomHole.style.background = 'blue';
    return randomHole;
 }
-
-console.log(getRandomHole(holes));
 
 
 function appear() {
    const time = getRandomTime(300, 700);
    const hole = getRandomHole(holes);
-   console.log(isTimeUp);
 
    hole.classList.add('active');
    setTimeout(() => {
@@ -45,6 +39,7 @@ function appear() {
       if (!isTimeUp) appear();
    }, time);
 }
+
 
 function startGame() {
    isTimeUp = false;
@@ -55,14 +50,12 @@ function startGame() {
    setTimeout(() => isTimeUp = true, 10000);
 }
 
-startButton.addEventListener('click', startGame);
 
 function hitMole(e) {
 
    const mole = e.target.closest('.mole');
 
    if (mole) {
-      console.log(e.target.parentNode);
       augh.currentTime = 0;
       augh.play();
       score++;
@@ -71,4 +64,6 @@ function hitMole(e) {
    }
 }
 
+
+startButton.addEventListener('click', startGame);
 gameField.addEventListener('click', hitMole);
